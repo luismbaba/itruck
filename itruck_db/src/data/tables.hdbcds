@@ -1,0 +1,58 @@
+context tables {
+    entity Address {
+        key addressId : Integer;
+            street    : String(100);
+            number    : String(10);
+            lat       : Double;
+            lon       : Double;
+    };
+
+    entity Shipment {
+        key shipmentId                 : Integer not null;
+            soId                       : Integer;
+            vehicleId                  : Integer;
+            material                   : String(10);
+            arrivalTimeAtOrigin        : UTCDateTime;
+            arrivalTimeAtDestination   : UTCDateTime;
+            startLoadingAtOrigin       : UTCDateTime;
+            startLoadingAtDestination  : UTCDateTime;
+            departureAtOrigin          : UTCDateTime;
+            departureAtDestination     : UTCDateTime;
+            startUnload                : UTCDateTime;
+            endUnload                  : UTCDateTime;
+            contactPhoneAtOrigin       : String(10);
+            contactPhoneAtDestination  : String(10);
+            contactPersonAtOrigin      : String(50);
+            contactPersonAtDestination : String(50);
+            originAddress              : association[1, 0..1] to tables.Address { addressId };
+            destinationAddress         : association[0..1]    to tables.Address { addressId };
+    };
+
+    entity EventMasterData {
+        id           : Integer;
+        description  : String(100);
+        eventType    : String(100);
+        avgEventTime : Double;
+    };
+
+    entity Events {
+        id                  : Integer;
+        eventId             : association[1, 0..1] to tables.EventMasterData { id };
+        eventStartTimestamp : UTCDateTime;
+        eventEndTimestamp   : UTCDateTime;
+        shipmentId          : association[1, 0..1] to tables.Shipment { shipmentId };
+        driverId            : Integer;
+        vehicleId           : Integer;
+    };
+
+    entity Locations {
+        id           : Integer;
+        shipmentId   : association[1, 0..1] to tables.EventMasterData { id };
+        speed        : Double;
+        eta          : Double;
+        lat          : Double;
+        lon          : Double;
+        creationDate : UTCDateTime;
+        lastUpdate   : UTCDateTime;
+    };
+};

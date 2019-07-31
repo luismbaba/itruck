@@ -1,0 +1,30 @@
+ID: itruck
+_schema-version: '2.1'
+version: 0.0.1
+
+modules:
+ - name: itruck_db
+   type: hdb
+   path: itruck_db
+   requires:
+    - name: hdi_itruck_db
+
+
+ - name: api
+   type: nodejs
+   path: api
+   provides:
+    - name: api_api
+      properties:
+         url: ${default-url}
+
+resources:
+ - name: hdi_itruck_db
+   parameters:
+      service-name: hdiitruckservice
+      config:
+         schema: itruck
+         makeUniqueName: false
+   properties:
+      hdi-container-name: ${service-name}
+   type: com.sap.xs.hdi-container
