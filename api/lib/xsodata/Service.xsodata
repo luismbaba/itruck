@@ -2,4 +2,5 @@ service{
   "tables.Address" as "Address";
   "tables.EventMasterData" as "EventMasterData";
   "tables.Events" as "Events";
+  "tables.Locations" as "Locations";
 }
