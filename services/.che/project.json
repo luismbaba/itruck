@@ -1,0 +1,1 @@
+{"type":"sap.nodejs","builders":{"default":"sap.nodejs","configs":{}},"runners":{"default":"system:/sap.nodejs/default","configs":{}},"attributes":{"sap.nodejs.package.version":["1.0.0"],"sap.nodejs.package.name":["services"],"sap.nodejs.package.main":["server.js"],"sap.nodejs.package.enableXsjs":["false"]},"mixinTypes":["mtamodule"]}

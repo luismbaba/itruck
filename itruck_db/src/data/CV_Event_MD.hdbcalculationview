@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Event_MD" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_Event_MD"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tables.EventMasterData">
+    <resourceUri>tables.EventMasterData</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="tables.EventMasterData">
+  <attributes>
+    <attribute id="id" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="id"/>
+      <keyMapping columnObjectName="tables.EventMasterData" columnName="id"/>
+    </attribute>
+    <attribute id="description" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="description"/>
+      <keyMapping columnObjectName="tables.EventMasterData" columnName="description"/>
+    </attribute>
+    <attribute id="eventType" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="eventType"/>
+      <keyMapping columnObjectName="tables.EventMasterData" columnName="eventType"/>
+    </attribute>
+    <attribute id="avgEventTime" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="avgEventTime"/>
+      <keyMapping columnObjectName="tables.EventMasterData" columnName="avgEventTime"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
