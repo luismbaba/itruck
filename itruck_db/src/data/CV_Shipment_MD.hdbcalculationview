@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_Shipment_MD" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_Shipment_MD"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tables.Shipment">
+    <resourceUri>tables.Shipment</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="tables.Shipment">
+  <attributes>
+    <attribute id="shipmentId" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="shipmentId"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="shipmentId"/>
+    </attribute>
+    <attribute id="soId" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="soId"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="soId"/>
+    </attribute>
+    <attribute id="vehicleId" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="vehicleId"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="vehicleId"/>
+    </attribute>
+    <attribute id="material" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="material"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="material"/>
+    </attribute>
+    <attribute id="arrivalTimeAtOrigin" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="arrivalTimeAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="arrivalTimeAtOrigin"/>
+    </attribute>
+    <attribute id="arrivalTimeAtDestination" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="arrivalTimeAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="arrivalTimeAtDestination"/>
+    </attribute>
+    <attribute id="startLoadingAtOrigin" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="startLoadingAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="startLoadingAtOrigin"/>
+    </attribute>
+    <attribute id="startLoadingAtDestination" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="startLoadingAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="startLoadingAtDestination"/>
+    </attribute>
+    <attribute id="departureAtOrigin" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="departureAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="departureAtOrigin"/>
+    </attribute>
+    <attribute id="departureAtDestination" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="departureAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="departureAtDestination"/>
+    </attribute>
+    <attribute id="startUnload" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="startUnload"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="startUnload"/>
+    </attribute>
+    <attribute id="endUnload" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="endUnload"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="endUnload"/>
+    </attribute>
+    <attribute id="contactPhoneAtOrigin" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPhoneAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPhoneAtOrigin"/>
+    </attribute>
+    <attribute id="contactPhoneAtDestination" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPhoneAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPhoneAtDestination"/>
+    </attribute>
+    <attribute id="contactPersonAtOrigin" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPersonAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPersonAtOrigin"/>
+    </attribute>
+    <attribute id="contactPersonAtDestination" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPersonAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPersonAtDestination"/>
+    </attribute>
+    <attribute id="originAddress_addressId" order="17" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="originAddress_addressId"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="originAddress.addressId"/>
+    </attribute>
+    <attribute id="destinationAddress_addressId" order="18" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="destinationAddress_addressId"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="destinationAddress.addressId"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
