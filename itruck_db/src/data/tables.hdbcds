@@ -1,3 +1,4 @@
+@OData.publish : true
 context tables {
     entity Vehicle {
         key vehicleId   : Integer generated always as identity;
@@ -19,26 +20,27 @@ context tables {
             vehicleId                  : Integer;
             material                   : String(10);
             arrivalTimeAtOrigin        : UTCDateTime;
-            arrivalTimeAtDestination   : UTCDateTime;
-            startLoadingAtOrigin       : UTCDateTime;
-            startLoadingAtDestination  : UTCDateTime;
             departureAtOrigin          : UTCDateTime;
+            arrivalTimeAtDestination   : UTCDateTime;
             departureAtDestination     : UTCDateTime;
-            startUnload                : UTCDateTime;
-            endUnload                  : UTCDateTime;
+            startLoading               : UTCDateTime;
+            endLoading                 : UTCDateTime;
+            startUnloading             : UTCDateTime;
+            endUnloading               : UTCDateTime;
             contactPhoneAtOrigin       : String(10);
-            contactPhoneAtDestination  : String(10);
             contactPersonAtOrigin      : String(50);
+            contactPhoneAtDestination  : String(10);
             contactPersonAtDestination : String(50);
             originAddress              : association[1, 0..1] to tables.Address { addressId };
             destinationAddress         : association[0..1]    to tables.Address { addressId };
+            shipmentDate               : UTCDateTime;
     };
 
     entity EventMasterData {
         key id           : Integer generated always as identity;
             description  : String(100);
-            eventType    : String(100);
             avgEventTime : Double;
+            plannedEvent : Boolean;
     };
 
     entity Events {
@@ -48,17 +50,34 @@ context tables {
             eventEndTimestamp   : UTCDateTime;
             shipmentId          : association[1, 0..1] to tables.Shipment { shipmentId };
             driverId            : Integer;
-            vehicleId           : Integer;
+            vehicleId           : association[1, 0..1] to tables.Vehicle { vehicleId };
     };
 
     entity Locations {
         key id           : Integer generated always as identity;
-            shipmentId   : association[1, 0..1] to tables.EventMasterData { id };
+            vehicleId    : association[1, 0..1] to tables.Vehicle { vehicleId };
+            shipmentId   : association[1, 0..1] to tables.Shipment { shipmentId };
             speed        : Double;
-            eta          : Double;
             lat          : Double;
             lon          : Double;
+            alt          : Double;
             creationDate : UTCDateTime;
-            lastUpdate   : UTCDateTime;
     };
+    
+    entity Messages {
+    	key id : Integer generated always as identity;
+    		message: String(100);
+    		vehicleId: Integer;
+    		read: Boolean;
+    		readDate: UTCDateTime;
+    		creationDate: UTCDateTime;
+    }
+    
+    
+    entity GeoFenceAccess {
+    	vehicleId : Integer;
+    	enter : UTCDateTime;
+    	leave: UTCDateTime;
+    	fence: String(50);
+    }
 };

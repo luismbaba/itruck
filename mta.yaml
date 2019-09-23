@@ -17,21 +17,19 @@ modules:
     requires:
       - name: hdi_itruck_db
       - name: itruck_db
-
   - name: services
     type: nodejs
     path: services
     provides:
-     - name: services_api
-       properties:
-          url: ${default-url}
-
+      - name: services_api
+        properties:
+          url: '${default-url}'
 resources:
   - name: hdi_itruck_db
     parameters:
       service-name: hdiitruckservice
       config:
-        schema: itruck
+        schema: ITRUCK
         makeUniqueName: false
     properties:
       hdi-container-name: '${service-name}'
