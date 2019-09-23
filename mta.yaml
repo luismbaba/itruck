@@ -31,7 +31,7 @@ resources:
     parameters:
       service-name: hdiitruckservice
       config:
-        schema: itruck
+        schema: ITRUCK
         makeUniqueName: false
     properties:
       hdi-container-name: '${service-name}'
