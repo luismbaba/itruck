@@ -21,6 +21,10 @@ modules:
   - name: services
     type: nodejs
     path: services
+    requires:
+      - name: mongodb-dev
+      - name: hdi_itruck_db
+      - name: itruck_db
     provides:
      - name: services_api
        properties:
@@ -31,8 +35,10 @@ resources:
     parameters:
       service-name: hdiitruckservice
       config:
-        schema: itruck
+        schema: ITRUCK
         makeUniqueName: false
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
+  - name: mongodb-dev
+    type: mongodb

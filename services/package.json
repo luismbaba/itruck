@@ -4,7 +4,11 @@
 		"express": "^4.17.1",
 		"http": "0.0.0",
 		"request": "^2.88.0",
-		"node-heremaps": "0.0.2"
+		"node-heremaps": "0.0.2",
+		"public-ip": "^3.2.0",
+		"mongodb": "^3.3.2",
+		"@sap/hana-client":"^*",
+		"saslprep":"^*"
 	},
 	"description": "my description",
 	"devDependencies": {
