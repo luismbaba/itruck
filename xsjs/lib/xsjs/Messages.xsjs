@@ -1,5 +1,8 @@
 var utils = $.import("xsjs", "Utils");
 
+$.response.headers.set("Access-Control-Allow-Origin", "*");
+$.response.status = $.net.http.OK;
+
 switch ($.request.method) {
 case ($.net.http.POST):
 	var payload = JSON.parse($.request.body.asString());
