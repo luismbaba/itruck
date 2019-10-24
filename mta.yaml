@@ -22,7 +22,6 @@ modules:
     type: nodejs
     path: services
     requires:
-      - name: mongodb-dev
       - name: hdi_itruck_db
       - name: itruck_db
     provides:
@@ -40,5 +39,3 @@ resources:
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-  - name: mongodb-dev
-    type: mongodb

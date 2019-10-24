@@ -3,4 +3,5 @@ service{
   "tables.EventMasterData" as "EventMasterData";
   "tables.Events" as "Events";
   "tables.Locations" as "Locations";
+  "tables.Shipment" as "Shipment";
 }
