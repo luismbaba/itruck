@@ -34,6 +34,8 @@ context tables {
             originAddress              : association[1, 0..1] to tables.Address { addressId };
             destinationAddress         : association[0..1]    to tables.Address { addressId };
             shipmentDate               : UTCDateTime;
+            customerId                 : Integer;
+            canceled                   : Boolean;
     };
 
     entity EventMasterData {
@@ -63,21 +65,20 @@ context tables {
             alt          : Double;
             creationDate : UTCDateTime;
     };
-    
+
     entity Messages {
-    	key id : Integer generated always as identity;
-    		message: String(100);
-    		vehicleId: Integer;
-    		read: Boolean;
-    		readDate: UTCDateTime;
-    		creationDate: UTCDateTime;
+        key id           : Integer generated always as identity;
+            message      : String(100);
+            vehicleId    : Integer;
+            read         : Boolean;
+            readDate     : UTCDateTime;
+            creationDate : UTCDateTime;
     }
-    
-    
+
     entity GeoFenceAccess {
-    	vehicleId : Integer;
-    	enter : UTCDateTime;
-    	leave: UTCDateTime;
-    	fence: String(50);
+        vehicleId : Integer;
+        enter     : UTCDateTime;
+        leave     : UTCDateTime;
+        fence     : String(50);
     }
 };

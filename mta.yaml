@@ -17,7 +17,6 @@ modules:
     requires:
       - name: hdi_itruck_db
       - name: itruck_db
-
   - name: services
     type: nodejs
     path: services
@@ -26,19 +25,39 @@ modules:
       - name: hdi_itruck_db
       - name: itruck_db
     provides:
-     - name: services_api
-       properties:
-          url: ${default-url}
-
+      - name: services_api
+        properties:
+          url: '${default-url}'
+  - name: Messages
+    type: html5
+    path: Messages
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: uaa_itruck
 resources:
   - name: hdi_itruck_db
     parameters:
       service-name: hdiitruckservice
       config:
-        schema: ITRUCK
+        schema: itruck
         makeUniqueName: false
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
   - name: mongodb-dev
     type: mongodb
+  - name: uaa_itruck
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+      service: xsuaa
+    type: org.cloudfoundry.managed-service
+  - name: dest_itruck
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service
