@@ -5,14 +5,15 @@ const HANA = require('./lib/hana.js');
 const saslprep = require('saslprep');
 
 // Get MongoDB connection from environmental or use local MongoDB instance
-const vcap_services = process.env.VCAP_SERVICES;
-const mongodb_service = JSON.parse(vcap_services).mongodb[0];
-const url = mongodb_service.credentials.uri;
+//const vcap_services = process.env.VCAP_SERVICES;
+//const mongodb_service = JSON.parse(vcap_services).mongodb[0];
+//const url = mongodb_service.credentials.uri;
+const url = 'mongodb://HvTfU_H3ppTWMxoS:IWf_EhShCG5qF0kr@10.11.241.37:58997/aZfmUMnGISIwVYXY';
 
 //console.log("Mongo URL:" + url);
 
 const MongoClient = mongodb.MongoClient;
-const dbName = 'BFiAVVtRpx2T1I9J';
+const dbName = 'aZfmUMnGISIwVYXY';
 
 function loadLocation(app) {
 	app.post("/isInsideGeoFence", (req, res) => {
@@ -39,7 +40,7 @@ function loadLocation(app) {
 						}
 					}
 				}).toArray(function (err2, docs) {
-					if (docs.length > 0) {
+					if (docs && docs.length > 0) {
 						for (let i = 0; i < docs.length; i++) {
 							const item = docs[i];
 							const hana = new HANA();
@@ -102,7 +103,6 @@ function loadLocation(app) {
 	});
 
 	app.delete("/location", function (req, res) {
-		const dbName = 'BFiAVVtRpx2T1I9J';
 		(async function () {
 			const client = new MongoClient(url, {
 				useNewUrlParser: true,
@@ -133,7 +133,6 @@ function loadLocation(app) {
 	});
 
 	app.post("/location", function (req, res) {
-		const dbName = 'BFiAVVtRpx2T1I9J';
 		(async function () {
 			const client = new MongoClient(url, {
 				useNewUrlParser: true,

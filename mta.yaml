@@ -21,7 +21,6 @@ modules:
     type: nodejs
     path: services
     requires:
-      - name: mongodb-dev
       - name: hdi_itruck_db
       - name: itruck_db
     provides:
@@ -48,16 +47,3 @@ resources:
     properties:
       hdi-container-name: '${service-name}'
     type: com.sap.xs.hdi-container
-  - name: mongodb-dev
-    type: mongodb
-  - name: uaa_itruck
-    parameters:
-      path: ./xs-security.json
-      service-plan: application
-      service: xsuaa
-    type: org.cloudfoundry.managed-service
-  - name: dest_itruck
-    parameters:
-      service-plan: lite
-      service: destination
-    type: org.cloudfoundry.managed-service
