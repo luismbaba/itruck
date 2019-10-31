@@ -45,22 +45,12 @@ function loadLocation(app) {
 							const item = docs[i];
 							const hana = new HANA();
 							const result = hana.checkGeoFenceAccess([req.body.vehicleId, item.name]);
-							console.log(result);
-							// const result = hana.prepareStatement(
-							// 	'SELECT * FROM  "ITRUCK"."tables.GeoFenceAccess" where "vehicleId"=? and "fence"=? and "leave" is null', [req.body.vehicleId, item.name]
-							// );
-							// console.log(result);
-							// //Se encontrou não faz nada, se não encontrou criar um nova entrada na tabela tables.GeoFenceAccess
-							// if (result === undefined || result.length < 1) {
-							// 	console.log("Registrando entrada GeoFence");
-							// 	const result = hana.prepareStatement(
-							// 		'INSERT INTO "ITRUCK"."tables.GeoFenceAccess" values (?,now(),null,?)', [req.body.vehicleId, item.name]);
-							// 	console.log(result);
-							// } else {
-							// 	console.log("Ja registrada entrada GeoFence");
-							// }
-							
+							console.log("Encontrou geofence:" + result);
 						}
+					} else {
+						console.log("Nao encontrou geofence");
+						const hana = new HANA();
+						hana.closeGeoFenceAccess([req.body.vehicleId]);
 					}
 					res.send(docs);
 
@@ -117,7 +107,7 @@ function loadLocation(app) {
 				// Insert a single document
 				if (req.body._id) {
 					let r = await db.collection('locations').deleteOne({
-						_id: req.body._id
+						_id: new objectId(req.body._id)
 					});
 					res.send('Excluido com Sucesso');
 				}

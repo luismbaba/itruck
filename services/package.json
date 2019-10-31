@@ -8,7 +8,8 @@
 		"public-ip": "^3.2.0",
 		"mongodb": "^3.3.2",
 		"@sap/hana-client":"^*",
-		"saslprep":"^*"
+		"saslprep":"^*",
+		"axios": "^0.19.0"
 	},
 	"description": "my description",
 	"devDependencies": {
