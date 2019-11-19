@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_test123" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_test123"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tables.Shipment">
+    <resourceUri>tables.Shipment</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="shipmentId"/>
+      <viewAttribute id="soId"/>
+      <viewAttribute id="vehicleId"/>
+      <viewAttribute id="material"/>
+      <viewAttribute id="arrivalTimeAtOrigin"/>
+      <viewAttribute id="departureAtOrigin"/>
+      <viewAttribute id="arrivalTimeAtDestination"/>
+      <viewAttribute id="departureAtDestination"/>
+      <viewAttribute id="startLoading"/>
+      <viewAttribute id="endLoading"/>
+      <viewAttribute id="startUnloading"/>
+      <viewAttribute id="endUnloading"/>
+      <viewAttribute id="contactPhoneAtOrigin"/>
+      <viewAttribute id="contactPersonAtOrigin"/>
+      <viewAttribute id="contactPhoneAtDestination"/>
+      <viewAttribute id="contactPersonAtDestination"/>
+      <viewAttribute id="originAddress_addressId"/>
+      <viewAttribute id="destinationAddress_addressId"/>
+      <viewAttribute id="shipmentDate"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="tables.Shipment">
+      <mapping xsi:type="Calculation:AttributeMapping" target="originAddress_addressId" source="originAddress.addressId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="destinationAddress_addressId" source="destinationAddress.addressId"/>
+    </input>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Projection_1">
+  <attributes>
+    <attribute id="material" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="material"/>
+      <keyMapping columnObjectName="Projection_1" columnName="material"/>
+    </attribute>
+    <attribute id="arrivalTimeAtOrigin" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="arrivalTimeAtOrigin"/>
+      <keyMapping columnObjectName="Projection_1" columnName="arrivalTimeAtOrigin"/>
+    </attribute>
+    <attribute id="departureAtOrigin" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="departureAtOrigin"/>
+      <keyMapping columnObjectName="Projection_1" columnName="departureAtOrigin"/>
+    </attribute>
+    <attribute id="arrivalTimeAtDestination" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="arrivalTimeAtDestination"/>
+      <keyMapping columnObjectName="Projection_1" columnName="arrivalTimeAtDestination"/>
+    </attribute>
+    <attribute id="departureAtDestination" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="departureAtDestination"/>
+      <keyMapping columnObjectName="Projection_1" columnName="departureAtDestination"/>
+    </attribute>
+    <attribute id="startLoading" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="startLoading"/>
+      <keyMapping columnObjectName="Projection_1" columnName="startLoading"/>
+    </attribute>
+    <attribute id="endLoading" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="endLoading"/>
+      <keyMapping columnObjectName="Projection_1" columnName="endLoading"/>
+    </attribute>
+    <attribute id="startUnloading" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="startUnloading"/>
+      <keyMapping columnObjectName="Projection_1" columnName="startUnloading"/>
+    </attribute>
+    <attribute id="endUnloading" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="endUnloading"/>
+      <keyMapping columnObjectName="Projection_1" columnName="endUnloading"/>
+    </attribute>
+    <attribute id="contactPhoneAtOrigin" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPhoneAtOrigin"/>
+      <keyMapping columnObjectName="Projection_1" columnName="contactPhoneAtOrigin"/>
+    </attribute>
+    <attribute id="contactPersonAtOrigin" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPersonAtOrigin"/>
+      <keyMapping columnObjectName="Projection_1" columnName="contactPersonAtOrigin"/>
+    </attribute>
+    <attribute id="contactPhoneAtDestination" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPhoneAtDestination"/>
+      <keyMapping columnObjectName="Projection_1" columnName="contactPhoneAtDestination"/>
+    </attribute>
+    <attribute id="contactPersonAtDestination" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPersonAtDestination"/>
+      <keyMapping columnObjectName="Projection_1" columnName="contactPersonAtDestination"/>
+    </attribute>
+    <attribute id="shipmentDate" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="shipmentDate"/>
+      <keyMapping columnObjectName="Projection_1" columnName="shipmentDate"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="shipmentId" order="1" aggregationType="sum" measureType="simple" key="true">
+      <descriptions defaultDescription="shipmentId"/>
+      <measureMapping columnObjectName="Projection_1" columnName="shipmentId"/>
+    </measure>
+    <measure id="soId" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="soId"/>
+      <measureMapping columnObjectName="Projection_1" columnName="soId"/>
+    </measure>
+    <measure id="vehicleId" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="vehicleId"/>
+      <measureMapping columnObjectName="Projection_1" columnName="vehicleId"/>
+    </measure>
+    <measure id="originAddress_addressId" order="17" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="originAddress_addressId"/>
+      <measureMapping columnObjectName="Projection_1" columnName="originAddress_addressId"/>
+    </measure>
+    <measure id="destinationAddress_addressId" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="destinationAddress_addressId"/>
+      <measureMapping columnObjectName="Projection_1" columnName="destinationAddress_addressId"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="84" y="164"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
