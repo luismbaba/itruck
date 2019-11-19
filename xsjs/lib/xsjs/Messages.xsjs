@@ -34,8 +34,7 @@ case ($.net.http.POST):
 		$.response.setBody("{\"message\": \"message sent\"}");
 	} catch (err) {
 		$.response.contentType = "text/html";
-		$.response
-			.setBody({\"error\": \"could not insert data\"}");
+		$.response.setBody("{\"error\": \"Could not insert data\"}");
 	}
 	break;
 case ($.net.http.GET):
@@ -53,12 +52,10 @@ case ($.net.http.GET):
 		$.response.setBody(JSON.stringify(resultSet));
 	} catch (err) {
 		$.response.contentType = "text/html";
-		$.response
-			.setBody({\"error\": \"no data\"}");
+		$.response.setBody("{\"error\": \"no data\"}");
 	}
 	break;
 default:
 	$.response.status = $.net.http.METHOD_NOT_ALLOWED;
-	$.response
-		.setBody({\"error\": \"Method not allowed\"});
-}
+	$.response.setBody("{\"error\": \"Method not allowed\"}");
+	}

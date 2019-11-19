@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="cv_endereco_cube" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="Endereço"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tables.Address">
+    <resourceUri>tables.Address</resourceUri>
+  </DataSource>
+  <DataSource id="tables.Address_Fact">
+    <resourceUri>tables.Address_Fact</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="addressId"/>
+      <viewAttribute id="street"/>
+      <viewAttribute id="number"/>
+      <viewAttribute id="lat"/>
+      <viewAttribute id="lon"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="tables.Address"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_2">
+    <viewAttributes>
+      <viewAttribute id="addressId"/>
+      <viewAttribute id="OTD"/>
+      <viewAttribute id="Loss"/>
+      <viewAttribute id="Canc"/>
+      <viewAttribute id="Delay"/>
+      <viewAttribute id="Satis"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="tables.Address_Fact"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:JoinView" id="Join_1" cardinality="C1_1" joinType="inner">
+    <viewAttributes>
+      <viewAttribute id="addressId" aggregationType="sum"/>
+      <viewAttribute id="street"/>
+      <viewAttribute id="number"/>
+      <viewAttribute id="lat" aggregationType="sum"/>
+      <viewAttribute id="lon" aggregationType="sum"/>
+      <viewAttribute id="OTD" aggregationType="sum"/>
+      <viewAttribute id="Loss" aggregationType="sum"/>
+      <viewAttribute id="Canc" aggregationType="sum"/>
+      <viewAttribute id="Delay" aggregationType="sum"/>
+      <viewAttribute id="Satis" aggregationType="sum"/>
+      <viewAttribute hidden="true" id="JOIN$addressId$addressId"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_2">
+      <mapping xsi:type="Calculation:AttributeMapping" target="OTD" source="OTD"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Loss" source="Loss"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Canc" source="Canc"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Delay" source="Delay"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="Satis" source="Satis"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$addressId$addressId" source="addressId"/>
+    </input>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="addressId" source="addressId"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="street" source="street"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="number" source="number"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="lat" source="lat"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="lon" source="lon"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="JOIN$addressId$addressId" source="addressId"/>
+    </input>
+    <joinAttribute name="JOIN$addressId$addressId"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Join_1">
+  <attributes>
+    <attribute id="addressId" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="addressId"/>
+      <keyMapping columnObjectName="Join_1" columnName="addressId"/>
+    </attribute>
+    <attribute id="street" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="street"/>
+      <keyMapping columnObjectName="Join_1" columnName="street"/>
+    </attribute>
+    <attribute id="number" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="number"/>
+      <keyMapping columnObjectName="Join_1" columnName="number"/>
+    </attribute>
+    <attribute id="lat" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="lat"/>
+      <keyMapping columnObjectName="Join_1" columnName="lat"/>
+    </attribute>
+    <attribute id="lon" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="lon"/>
+      <keyMapping columnObjectName="Join_1" columnName="lon"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="OTD" order="6" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="OTD"/>
+      <measureMapping columnObjectName="Join_1" columnName="OTD"/>
+    </measure>
+    <measure id="Loss" order="7" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="Loss"/>
+      <measureMapping columnObjectName="Join_1" columnName="Loss"/>
+    </measure>
+    <measure id="Canc" order="8" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="Canc"/>
+      <measureMapping columnObjectName="Join_1" columnName="Canc"/>
+    </measure>
+    <measure id="Delay" order="9" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="Delay"/>
+      <measureMapping columnObjectName="Join_1" columnName="Delay"/>
+    </measure>
+    <measure id="Satis" order="10" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="Satis"/>
+      <measureMapping columnObjectName="Join_1" columnName="Satis"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="19" y="307"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Projection_2" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="224" y="262"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Join_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="206" y="135"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="Projection_2" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="20" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+    <shape modelObjectName="Projection_1" modelObjectNameSpace="Join_1" modelObjectType="JoinNodeInput">
+      <upperLeftCorner x="320" y="30"/>
+      <rectangleSize width="136.0234375"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

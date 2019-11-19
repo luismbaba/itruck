@@ -36,7 +36,7 @@ modules:
     build-parameters:
       builder: grunt
     requires:
-      - name: uaa_itruck
+      - name: hdi_itruck_db
 resources:
   - name: hdi_itruck_db
     parameters:

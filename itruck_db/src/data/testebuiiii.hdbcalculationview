@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="testebuiiii" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="testebuiiii"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tables.Address">
+    <resourceUri>tables.Address</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="tables.Address">
+  <attributes>
+    <attribute id="addressId" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="addressId"/>
+      <keyMapping columnObjectName="tables.Address" columnName="addressId"/>
+    </attribute>
+    <attribute id="street" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="street"/>
+      <keyMapping columnObjectName="tables.Address" columnName="street"/>
+    </attribute>
+    <attribute id="number" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="number"/>
+      <keyMapping columnObjectName="tables.Address" columnName="number"/>
+    </attribute>
+    <attribute id="lat" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="lat"/>
+      <keyMapping columnObjectName="tables.Address" columnName="lat"/>
+    </attribute>
+    <attribute id="lon" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="lon"/>
+      <keyMapping columnObjectName="tables.Address" columnName="lon"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

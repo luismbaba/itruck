@@ -4,4 +4,5 @@ service{
   "tables.Events" as "Events";
   "tables.Locations" as "Locations";
   "tables.Shipment" as "Shipment";
+  "tables.Shipment_SAC2" as "ShipmentSAC";
 }
