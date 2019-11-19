@@ -1,0 +1,14 @@
+{
+  "welcomeFile": "/Messages/index.html",
+  "authenticationMethod": "none",
+  "logout": {
+    "logoutEndpoint": "/do/logout"
+  },
+  "routes": [
+    {
+      "source": "^/Messages/(.*)$",
+      "target": "$1",
+      "localDir": "webapp"
+    }
+  ]
+}

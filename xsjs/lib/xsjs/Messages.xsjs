@@ -1,9 +1,17 @@
 var utils = $.import("xsjs", "Utils");
 
 $.response.headers.set("Access-Control-Allow-Origin", "*");
+$.response.headers.set("Access-Control-Allow-Methods", "*");
+$.response.headers.set("Access-Control-Allow-Headers", "*");
 $.response.status = $.net.http.OK;
 
 switch ($.request.method) {
+case ($.net.http.OPTIONS):
+	$.response.headers.set("Access-Control-Allow-Origin", "*");
+	$.response.headers.set("Access-Control-Allow-Methods", "*");
+	$.response.headers.set("Access-Control-Allow-Headers", "*");
+	$.response.status = $.net.http.OK;
+	break;
 case ($.net.http.POST):
 	var payload = JSON.parse($.request.body.asString());
 	try {
@@ -16,18 +24,17 @@ case ($.net.http.POST):
 			console.log(element.vehicleId);
 			query =
 				'INSERT INTO "tables.Messages"("message", "vehicleId", "read", "creationDate") VALUES (?,?,?,?)';
-			var result =  conn.executeUpdate(query, payload.message, element.vehicleId, false, new Date());
+			var result = conn.executeUpdate(query, payload.message, element.vehicleId, false, new Date());
 			conn.commit();
 			return result;
 		});
 		conn.commit();
 
 		$.response.contentType = "application/json";
-		$.response.setBody(JSON.stringify(result));
+		$.response.setBody("{\"message\": \"message sent\"}");
 	} catch (err) {
 		$.response.contentType = "text/html";
-		$.response
-			.setBody("could not insert data");
+		$.response.setBody("{\"error\": \"Could not insert data\"}");
 	}
 	break;
 case ($.net.http.GET):
@@ -45,12 +52,10 @@ case ($.net.http.GET):
 		$.response.setBody(JSON.stringify(resultSet));
 	} catch (err) {
 		$.response.contentType = "text/html";
-		$.response
-			.setBody("no data");
+		$.response.setBody("{\"error\": \"no data\"}");
 	}
 	break;
 default:
 	$.response.status = $.net.http.METHOD_NOT_ALLOWED;
-	$.response
-		.setBody("Method not allowed");
-}
+	$.response.setBody("{\"error\": \"Method not allowed\"}");
+	}

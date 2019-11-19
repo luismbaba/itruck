@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="cv_teste00" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" outputViewType="Aggregation" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="cv_teste00"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="tables.Shipment">
+    <resourceUri>tables.Shipment</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="tables.Shipment">
+  <attributes>
+    <attribute id="material" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="material"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="material"/>
+    </attribute>
+    <attribute id="arrivalTimeAtOrigin" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="arrivalTimeAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="arrivalTimeAtOrigin"/>
+    </attribute>
+    <attribute id="departureAtOrigin" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="departureAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="departureAtOrigin"/>
+    </attribute>
+    <attribute id="arrivalTimeAtDestination" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="arrivalTimeAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="arrivalTimeAtDestination"/>
+    </attribute>
+    <attribute id="departureAtDestination" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="departureAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="departureAtDestination"/>
+    </attribute>
+    <attribute id="startLoading" order="9" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="startLoading"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="startLoading"/>
+    </attribute>
+    <attribute id="endLoading" order="10" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="endLoading"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="endLoading"/>
+    </attribute>
+    <attribute id="startUnloading" order="11" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="startUnloading"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="startUnloading"/>
+    </attribute>
+    <attribute id="endUnloading" order="12" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="endUnloading"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="endUnloading"/>
+    </attribute>
+    <attribute id="contactPhoneAtOrigin" order="13" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPhoneAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPhoneAtOrigin"/>
+    </attribute>
+    <attribute id="contactPersonAtOrigin" order="14" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPersonAtOrigin"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPersonAtOrigin"/>
+    </attribute>
+    <attribute id="contactPhoneAtDestination" order="15" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPhoneAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPhoneAtDestination"/>
+    </attribute>
+    <attribute id="contactPersonAtDestination" order="16" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="contactPersonAtDestination"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="contactPersonAtDestination"/>
+    </attribute>
+    <attribute id="shipmentDate" order="19" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="shipmentDate"/>
+      <keyMapping columnObjectName="tables.Shipment" columnName="shipmentDate"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="shipmentId" order="1" aggregationType="sum" measureType="simple" key="true">
+      <descriptions defaultDescription="shipmentId"/>
+      <measureMapping columnObjectName="tables.Shipment" columnName="shipmentId"/>
+    </measure>
+    <measure id="soId" order="2" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="soId"/>
+      <measureMapping columnObjectName="tables.Shipment" columnName="soId"/>
+    </measure>
+    <measure id="vehicleId" order="3" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="vehicleId"/>
+      <measureMapping columnObjectName="tables.Shipment" columnName="vehicleId"/>
+    </measure>
+    <measure id="originAddress_addressId" order="17" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="originAddress_addressId"/>
+      <measureMapping columnObjectName="tables.Shipment" columnName="originAddress.addressId"/>
+    </measure>
+    <measure id="destinationAddress_addressId" order="18" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="destinationAddress_addressId"/>
+      <measureMapping columnObjectName="tables.Shipment" columnName="destinationAddress.addressId"/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+  <localDimensions/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

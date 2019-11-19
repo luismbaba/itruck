@@ -17,7 +17,6 @@ modules:
     requires:
       - name: hdi_itruck_db
       - name: itruck_db
-
   - name: services
     type: nodejs
     path: services
@@ -25,16 +24,25 @@ modules:
       - name: hdi_itruck_db
       - name: itruck_db
     provides:
-     - name: services_api
-       properties:
-          url: ${default-url}
-
+      - name: services_api
+        properties:
+          url: '${default-url}'
+  - name: Messages
+    type: html5
+    path: Messages
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    build-parameters:
+      builder: grunt
+    requires:
+      - name: hdi_itruck_db
 resources:
   - name: hdi_itruck_db
     parameters:
       service-name: hdiitruckservice
       config:
-        schema: ITRUCK
+        schema: itruck
         makeUniqueName: false
     properties:
       hdi-container-name: '${service-name}'

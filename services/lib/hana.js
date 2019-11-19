@@ -81,15 +81,12 @@ module.exports = class HANA {
 							if (err) throw err;
 							client2.prepare('INSERT INTO "ITRUCK"."tables.GeoFenceAccess" values (?,now(),null,?)', function (err, statement) {
 								if (err) throw err;
-								statement.exec(params, function (err2, rows2) {
+								statement.exec(params, function (err, rows2) {
 									client2.end();
-									if (err2) {
-										console.log(JSON.stringify(err2));
-										throw err2
-									};
+									if (err) throw err;
 
 									axios.post('https://innovator-challenge-cf-lac-xsjs.cfapps.eu10.hana.ondemand.com/xsjs/Messages.xsjs', {
-											'message': 'You have entered the location ' + params[1]
+											'message': 'You has entered the location ' + params[1]
 										})
 										.then((res) => {
 											console.log(`statusCode: ${res.status}`)
@@ -129,13 +126,13 @@ module.exports = class HANA {
 							if (err) throw err;
 							client2.prepare(
 								'UPDATE "ITRUCK"."tables.GeoFenceAccess" set "leave"=now() where "vehicleId"=? and "leave" is null',
-								function (err2, statement) {
-									if (err2) throw err2;
+								function (err, statement) {
+									if (err) throw err;
 									statement.exec(params, function (err, rows2) {
 										client2.end();
 
 										axios.post('https://innovator-challenge-cf-lac-xsjs.cfapps.eu10.hana.ondemand.com/xsjs/Messages.xsjs', {
-												'message': 'You have left the location ' + rows[0].fence
+												'message': 'You has left the location ' + rows[0].fence
 											})
 											.then((res) => {
 												console.log(`statusCode: ${res.status}`)

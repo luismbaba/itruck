@@ -34,6 +34,8 @@ context tables {
             originAddress              : association[1, 0..1] to tables.Address { addressId };
             destinationAddress         : association[0..1]    to tables.Address { addressId };
             shipmentDate               : UTCDateTime;
+            customerId                 : Integer;
+            cancelled                  : Boolean;
     };
 
     entity EventMasterData {
@@ -63,21 +65,56 @@ context tables {
             alt          : Double;
             creationDate : UTCDateTime;
     };
-    
+
     entity Messages {
-    	key id : Integer generated always as identity;
-    		message: String(100);
-    		vehicleId: Integer;
-    		read: Boolean;
-    		readDate: UTCDateTime;
-    		creationDate: UTCDateTime;
+        key id           : Integer generated always as identity;
+            message      : String(100);
+            vehicleId    : Integer;
+            read         : Boolean;
+            readDate     : UTCDateTime;
+            creationDate : UTCDateTime;
     }
-    
-    
+
     entity GeoFenceAccess {
-    	key vehicleId : Integer;
-    	key fence: String(50);
-    	key enter : UTCDateTime;
-    	leave: UTCDateTime;
+        key vehicleId : Integer;
+        key enter     : UTCDateTime;
+        leave     : UTCDateTime;
+        key fence     : String(50);
     }
+
+    entity Address_Fact {
+        key addressId : Integer generated always as identity;
+            OTD       : Double;
+            Loss      : Double;
+            Canc      : Double;
+            Delay     : Double;
+            Satis     : Double;
+    
+};
+    entity Shipment_SAC {
+        key shipmentId                 : Integer;
+            soId                       : Integer;
+            vehicleId                  : Integer;
+            EventTime				   : UTCDateTime;
+            EventId					   : Integer;
+            EventTxt				   : String(50);
+            departureAtOrigin          : UTCDateTime;
+            arrivalTimeAtDestination   : UTCDateTime;
+            arrivalTimeAtWarehouse	   : UTCDateTime;
+            customerId                 : Integer;
+     };
+     
+         entity Shipment_SAC2 {
+       
+        key shipmentId                 : Integer;
+         key soId                       : Integer;
+            vehicleId                  : Integer;
+        key EventId					   : Integer;
+            EventInitialTime	       : UTCDateTime;
+            EventEndTime               : UTCDateTime;
+            EventEstimateTime  	       : UTCDateTime;
+            arrivalTimeAtDestination   : UTCDateTime;
+            arrivalTimeAtWarehouse	   : UTCDateTime;
+            customerId                 : Integer;
+     };
 };

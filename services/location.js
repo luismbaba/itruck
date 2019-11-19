@@ -35,7 +35,7 @@ function loadLocation(app) {
 						$geoIntersects: {
 							$geometry: {
 								"type": "Point",
-								"coordinates": [parseFloat(req.body.lon), parseFloat(req.body.lat)]
+								"coordinates": [req.body.lon, req.body.lat]
 							}
 						}
 					}
@@ -45,16 +45,14 @@ function loadLocation(app) {
 							const item = docs[i];
 							const hana = new HANA();
 							const result = hana.checkGeoFenceAccess([req.body.vehicleId, item.name]);
-							console.log("Encontrou geofence:" + docs.length );
-							res.send(docs);
+							console.log("Encontrou geofence:" + result);
 						}
 					} else {
-						//console.log("Nao encontrou geofence");
+						console.log("Nao encontrou geofence");
 						const hana = new HANA();
 						hana.closeGeoFenceAccess([req.body.vehicleId]);
-						res.send("Nao encontrou geofence");
 					}
-					
+					res.send(docs);
 
 				});
 
@@ -120,6 +118,7 @@ function loadLocation(app) {
 
 			// Close connection
 			client.close();
+
 		})();
 	});
 
